@@ -2,8 +2,8 @@
 	include "include.php";
 
 	try {
-		if (count($_cfg_) == 0) throw new Exception("config.php not found");
-		
+		if (!isset($_cfg_) || count($_cfg_) == 0) throw new Exception("config.php not found");
+
 		$bot       = new SlackBot($_cfg_['slack']['token'], $_cfg_['slack']['nickname'], $_cfg_['slack']['imageUrl']);
 		$channelId = $_REQUEST['channel_id'];
 		$text      = $_REQUEST['text'];
