@@ -17,8 +17,7 @@
 			return self::$baseUrl . $method;
 		}
 
-		private function request($method, array $param = null) {
-			if ($param == null) $param = [];
+		private function request($method, $param = []) {
 			$param['token'] = $this->token;
 
 			$url = self::buildUrl($method);
