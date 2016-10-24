@@ -35,14 +35,18 @@
 			return $json;
 		}
 
-		function message($channelId, $message) {
-			$param = [
-				'channel'  => $channelId,
-				'text'     => htmlspecialchars($message),
+		public function message($channel, $message, $mentionTargets = []) {
+			$text = htmlspecialchars($message);
+
+			if (count($mentionTargets)) {
+				$text = "<" . implode("> <", $mentionTargets) . "> " . $text;
+			}
+
+			return $this->request("chat.postMessage", [
+				'channel'  => $channel,
+				'text'     => $text,
 				'username' => $this->userName,
 				'icon_url' => $this->iconUrl
-			];
-
-			self::request("chat.postMessage", $param);
+			]);
 		}
 	}
