@@ -11,6 +11,8 @@
 			$this->token    = $token;
 			$this->userName = $userName;
 			$this->iconUrl  = $iconUrl;
+
+			$this->request("rtm.start");
 		}
 
 		private static function buildUrl($method) {
@@ -42,9 +44,5 @@
 			];
 
 			self::request("chat.postMessage", $param);
-		}
-
-		function init() {
-			self::request("rtm.start");
 		}
 	}
