@@ -7,7 +7,7 @@
 		/** @var String */
 		private $token, $userName, $iconUrl;
 
-		function __construct($token, $userName, $iconUrl) {
+		function __construct($token, $userName, $iconUrl = null) {
 			$this->token    = $token;
 			$this->userName = $userName;
 			$this->iconUrl  = $iconUrl;
