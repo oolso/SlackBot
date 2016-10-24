@@ -49,4 +49,12 @@
 				'icon_url' => $this->iconUrl
 			]);
 		}
+
+		public static function Notice($channel, $message, $options = []) {
+			global $_cfg_;
+			$name           = isset($options['name']) ? $options['name'] : 'Alert';
+			$mentionTargets = isset($options['mentionTargets']) ? $options['mentionTargets'] : [];
+			$static         = new static($_cfg_['slack']['token'], $name);
+			return $static->message($channel, $message, $mentionTargets);
+		}
 	}
